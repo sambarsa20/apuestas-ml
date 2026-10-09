@@ -72,9 +72,9 @@ def narrative(contrib: pd.DataFrame, cls: int, n: int = 3) -> list[str]:
     name = config.CLASS_NAMES[cls]
     pro = contrib[contrib["Impacto"] > 0].head(n)
     con = contrib[contrib["Impacto"] < 0].head(2)
-    lines = [f"**A favor de '{name}':**"]
+    lines = [f"**A favor de '{name}':**", ""]
     lines += [f"- {r.Variable}: {_fmt(r.feature, r.Valor)}" for r in pro.itertuples()] or ["- (ninguna variable fuerte)"]
     if len(con):
-        lines.append(f"**En contra de '{name}':**")
+        lines += ["", f"**En contra de '{name}':**", ""]
         lines += [f"- {r.Variable}: {_fmt(r.feature, r.Valor)}" for r in con.itertuples()]
     return lines
