@@ -1,6 +1,8 @@
 # Cada push a main en GitHub se copia automáticamente al Space de Hugging Face.
-# Requiere: secreto HF_TOKEN (token con permiso "write") y variables HF_USER y HF_SPACE
-# en Settings → Secrets and variables → Actions del repo de GitHub.
+# Requiere en Settings → Secrets and variables → Actions del repo de GitHub:
+#   - Secret   HF_TOKEN : token de Hugging Face con permiso "Write"
+#   - Variable HF_USER  : usuario de Hugging Face
+#   - Variable HF_SPACE : nombre del Space (ej. apuestas-ml)
 name: Sync to Hugging Face Space
 on:
   push:
@@ -11,12 +13,45 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Check configuration
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_USER: ${{ vars.HF_USER }}
+          HF_SPACE: ${{ vars.HF_SPACE }}
+        run: |
+          missing=""
+          [ -z "$HF_TOKEN" ] && missing="$missing secret:HF_TOKEN"
+          [ -z "$HF_USER" ]  && missing="$missing variable:HF_USER"
+          [ -z "$HF_SPACE" ] && missing="$missing variable:HF_SPACE"
+          if [ -n "$missing" ]; then
+            echo "::error title=Falta configuracion::No estan definidos:$missing (Settings > Secrets and variables > Actions)"
+            exit 1
+          fi
+          code=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $HF_TOKEN" https://huggingface.co/api/whoami-v2)
+          if [ "$code" != "200" ]; then
+            echo "::error title=Token invalido::Hugging Face rechazo HF_TOKEN (HTTP $code). Genera un token nuevo tipo Write."
+            exit 1
+          fi
+          code=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: Bearer $HF_TOKEN" "https://huggingface.co/api/spaces/$HF_USER/$HF_SPACE")
+          if [ "$code" != "200" ]; then
+            echo "::error title=Space no encontrado::No existe o no hay acceso a spaces/$HF_USER/$HF_SPACE (HTTP $code)."
+            exit 1
+          fi
+          echo "::notice title=Configuracion OK::Token valido y Space $HF_USER/$HF_SPACE encontrado."
+
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-          lfs: true
+
       - name: Push to Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_USER: ${{ vars.HF_USER }}
+          HF_SPACE: ${{ vars.HF_SPACE }}
         run: |
-          git push --force "https://${{ vars.HF_USER }}:${HF_TOKEN}@huggingface.co/spaces/${{ vars.HF_USER }}/${{ vars.HF_SPACE }}" HEAD:main
+          if ! git push --force "https://$HF_USER:$HF_TOKEN@huggingface.co/spaces/$HF_USER/$HF_SPACE" HEAD:main 2> err.txt; then
+            msg=$(sed "s/$HF_TOKEN/***/g" err.txt | tr '\n' ' ' | cut -c1-400)
+            echo "::error title=Push rechazado::$msg"
+            exit 1
+          fi
+          echo "::notice title=Sincronizado::Codigo publicado en https://huggingface.co/spaces/$HF_USER/$HF_SPACE"
