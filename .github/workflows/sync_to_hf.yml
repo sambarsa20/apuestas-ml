@@ -1,0 +1,22 @@
+# Cada push a main en GitHub se copia automáticamente al Space de Hugging Face.
+# Requiere: secreto HF_TOKEN (token con permiso "write") y variables HF_USER y HF_SPACE
+# en Settings → Secrets and variables → Actions del repo de GitHub.
+name: Sync to Hugging Face Space
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Push to Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          git push --force "https://${{ vars.HF_USER }}:${HF_TOKEN}@huggingface.co/spaces/${{ vars.HF_USER }}/${{ vars.HF_SPACE }}" HEAD:main
