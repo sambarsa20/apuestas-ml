@@ -75,13 +75,19 @@ tr, va = er["validation_0"]["mlogloss"], er["validation_1"]["mlogloss"]
 res["curva_aprendizaje"] = {"arboles": list(range(1, len(tr) + 1, 5)), "entrenamiento": [r(x) for x in tr[::5]],
                             "validacion": [r(x) for x in va[::5]], "arboles_elegidos": B.n_trees}
 
-# Sensibilidad al umbral de valor esperado (apuesta fija 1%)
+# Sensibilidad al umbral: ROI plano ($1 por apuesta, sin bankroll, para comparar umbrales de forma limpia)
+_o = test[betting.ODDS].to_numpy(dtype=float)
+_ok = np.all(np.isfinite(_o) & (_o > 1), axis=1)
+_ev = np.where(_o <= config.MAX_ODDS, B.test_proba * _o - 1, -np.inf)
+_best = _ev.argmax(1); _bev = _ev[np.arange(len(test)), _best]
+_won = _best == test["y"].to_numpy(); _ob = _o[np.arange(len(test)), _best]
 sens = []
 for t in [0.0, 0.02, 0.05, 0.08, 0.10, 0.15, 0.20, 0.30]:
-    _, sm = betting.backtest(test, B.test_proba, min_ev=t)
-    row = sm.set_index("Estrategia").loc["Apuesta fija 1%"]
-    sens.append({"umbral": t, "apuestas": int(row["Apuestas"]), "roi": r(row["ROI sobre lo apostado %"], 2),
-                 "aciertos": r(sm.attrs.get("hit_rate"))})
+    mk = _ok & (_bev >= t)
+    n = int(mk.sum())
+    pnl = np.where(_won[mk], _ob[mk] - 1, -1.0)
+    sens.append({"umbral": t, "apuestas": n, "roi": r(pnl.mean() * 100 if n else np.nan, 2),
+                 "aciertos": r(_won[mk].mean() if n else np.nan), "cuota_media": r(_ob[mk].mean() if n else np.nan, 2)})
 res["sensibilidad_umbral"] = sens
 
 # Ejemplo real del set de prueba: el partido más reciente con valor y EV moderado (5%–15%)
