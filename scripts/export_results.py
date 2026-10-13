@@ -64,6 +64,26 @@ res = {
     "importancia": [{"variable": row.Variable, "total": r(row.Total)} for row in B.importance.head(10).itertuples()],
 }
 
+# Curva de aprendizaje: error (log loss) en entrenamiento y validación según el número de árboles
+from xgboost import XGBClassifier  # noqa: E402
+from src.features import FEATURES  # noqa: E402
+lc_params = {k: v for k, v in config.XGB_PARAMS.items() if k != "early_stopping_rounds"}
+lc = XGBClassifier(**lc_params)
+lc.fit(train[FEATURES], train["y"], eval_set=[(train[FEATURES], train["y"]), (valid[FEATURES], valid["y"])], verbose=False)
+er = lc.evals_result()
+tr, va = er["validation_0"]["mlogloss"], er["validation_1"]["mlogloss"]
+res["curva_aprendizaje"] = {"arboles": list(range(1, len(tr) + 1, 5)), "entrenamiento": [r(x) for x in tr[::5]],
+                            "validacion": [r(x) for x in va[::5]], "arboles_elegidos": B.n_trees}
+
+# Sensibilidad al umbral de valor esperado (apuesta fija 1%)
+sens = []
+for t in [0.0, 0.02, 0.05, 0.08, 0.10, 0.15, 0.20, 0.30]:
+    _, sm = betting.backtest(test, B.test_proba, min_ev=t)
+    row = sm.set_index("Estrategia").loc["Apuesta fija 1%"]
+    sens.append({"umbral": t, "apuestas": int(row["Apuestas"]), "roi": r(row["ROI sobre lo apostado %"], 2),
+                 "aciertos": r(sm.attrs.get("hit_rate"))})
+res["sensibilidad_umbral"] = sens
+
 # Ejemplo real del set de prueba: el partido más reciente con valor y EV moderado (5%–15%)
 odds = test[betting.ODDS].to_numpy(dtype=float)
 ev = np.where(odds <= config.MAX_ODDS, B.test_proba * odds - 1, -np.inf)
@@ -76,6 +96,7 @@ if len(cand):
     sv = explain.shap_values(B.explainer, test.iloc[[i]])[0]
     cls = d["bet"] if d["bet"] is not None else int(np.argmax(B.test_proba[i]))
     contrib = explain.explain_one(sv, row, cls, top=5)
+    base = np.ravel(B.explainer.expected_value)
     res["ejemplo"] = {
         "fecha": f"{row['Date']:%Y-%m-%d}", "liga": config.LEAGUES[row["Div"]].split(" (")[0],
         "local": row["HomeTeam"], "visitante": row["AwayTeam"], "resultado_real": row["FTR"],
@@ -86,6 +107,8 @@ if len(cand):
         "margen": r(d["overround"]), "apuesta": None if d["bet"] is None else config.CLASS_NAMES[d["bet"]],
         "stake": r(d["stake"]), "razon": d["reason"],
         "shap": [{"variable": c.Variable, "valor": r(c.Valor, 3), "impacto": r(c.Impacto)} for c in contrib.itertuples()],
+        "shap_base": [r(x) for x in base], "shap_clase": config.CLASS_NAMES[cls],
+        "shap_total": r(float(sv[:, cls].sum())),
     }
 
 fx = []
