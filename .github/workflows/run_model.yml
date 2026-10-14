@@ -24,7 +24,9 @@ jobs:
       - name: Install
         run: pip install -q -r requirements.txt
       - name: Run pipeline and export results
-        run: python scripts/export_results.py results
+        run: |
+          python scripts/export_results.py results
+          python scripts/export_ejemplo.py results
       - name: Publish to branch "resultados"
         run: |
           cd results
