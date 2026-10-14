@@ -90,6 +90,24 @@ for t in [0.0, 0.02, 0.05, 0.08, 0.10, 0.15, 0.20, 0.30]:
                  "aciertos": r(_won[mk].mean() if n else np.nan), "cuota_media": r(_ob[mk].mean() if n else np.nan, 2)})
 res["sensibilidad_umbral"] = sens
 
+# ¿Sirve la cuota máxima? ROI plano por tramo de cuota, SIN tope de cuota (EV >= 5%)
+_evn = B.test_proba * _o - 1
+_bn = _evn.argmax(1); _bevn = _evn[np.arange(len(test)), _bn]
+_wn = _bn == test["y"].to_numpy(); _obn = _o[np.arange(len(test)), _bn]
+_pm = B.test_proba[np.arange(len(test)), _bn]
+_fair = np.full_like(B.test_proba, np.nan)
+_fair[_ok] = betting.fair_probs(_o[_ok])
+_pf = _fair[np.arange(len(test)), _bn]
+tramos = []
+for lo, hi, lab in [(1.0, 2.0, "1-2"), (2.0, 3.0, "2-3"), (3.0, 5.0, "3-5"), (5.0, 10.0, "5-10"), (10.0, 1e9, "10+")]:
+    mk = _ok & (_bevn >= config.MIN_EV) & (_obn >= lo) & (_obn < hi)
+    n = int(mk.sum())
+    pnl = np.where(_wn[mk], _obn[mk] - 1, -1.0)
+    tramos.append({"tramo": lab, "apuestas": n, "roi": r(pnl.mean() * 100 if n else np.nan, 2),
+                   "aciertos": r(_wn[mk].mean() if n else np.nan), "prob_modelo": r(_pm[mk].mean() if n else np.nan),
+                   "prob_mercado": r(np.nanmean(_pf[mk]) if n else np.nan)})
+res["roi_por_cuota"] = tramos
+
 # Ejemplo real del set de prueba: el partido más reciente con valor y EV moderado (5%–15%)
 odds = test[betting.ODDS].to_numpy(dtype=float)
 ev = np.where(odds <= config.MAX_ODDS, B.test_proba * odds - 1, -np.inf)
