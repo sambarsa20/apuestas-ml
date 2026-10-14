@@ -54,6 +54,18 @@ dm = xgb.DMatrix(X, feature_names=FEATURES)
 # 3) Camino real por los árboles de las rondas 1 y 2 (3 árboles por ronda: Local, Empate, Visitante)
 tdf = booster.trees_to_dataframe()
 
+# Árboles completos de la ronda 1 (para dibujarlos enteros en la presentación)
+arboles_r1 = {}
+for k, cls in enumerate(config.CLASS_NAMES):
+    nodes = []
+    for n in tdf[tdf["Tree"] == k].itertuples():
+        leaf = n.Feature == "Leaf"
+        nodes.append({"id": n.ID, "variable": None if leaf else FEATURE_LABELS.get(n.Feature, n.Feature),
+                      "feature": None if leaf else n.Feature, "corte": None if leaf else r(n.Split, 3),
+                      "si": None if leaf else n.Yes, "no": None if leaf else n.No,
+                      "hoja": r(n.Gain, 4) if leaf else None, "cover": r(n.Cover, 1)})
+    arboles_r1[cls] = nodes
+
 
 def path(tree_id):
     t = tdf[tdf["Tree"] == tree_id].set_index("ID")
@@ -120,6 +132,7 @@ res = {
     "rondas_modelo": best,
     "variables": [{"feature": f, "variable": FEATURE_LABELS[f], "valor": r(float(X.iloc[0][f]), 3)} for f in FEATURES],
     "rondas": rondas,
+    "arboles_ronda1": arboles_r1,
     "puntaje_inicial": base_margin,
     "trayectoria": traj,
     "prob_final": [r(x) for x in p],
