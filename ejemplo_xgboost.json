@@ -1,0 +1,1034 @@
+{
+  "partido": {
+    "fecha": "2026-10-11",
+    "liga": "Premier League",
+    "local": "Liverpool",
+    "visitante": "Man City",
+    "goles": [
+      0,
+      3
+    ],
+    "resultado": "Visitante"
+  },
+  "rondas_modelo": 187,
+  "variables": [
+    {
+      "feature": "elo_diff",
+      "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+      "valor": -27.294
+    },
+    {
+      "feature": "elo_exp_home",
+      "variable": "Prob. de victoria local según Elo",
+      "valor": 0.461
+    },
+    {
+      "feature": "home_elo",
+      "variable": "Elo del local",
+      "valor": 1573.257
+    },
+    {
+      "feature": "away_elo",
+      "variable": "Elo del visitante",
+      "valor": 1660.55
+    },
+    {
+      "feature": "home_pts5",
+      "variable": "Puntos por partido del local (últimos 5)",
+      "valor": 1.8
+    },
+    {
+      "feature": "away_pts5",
+      "variable": "Puntos por partido del visitante (últimos 5)",
+      "valor": 3.0
+    },
+    {
+      "feature": "home_gf5",
+      "variable": "Goles a favor del local (prom. últimos 5)",
+      "valor": 1.4
+    },
+    {
+      "feature": "home_ga5",
+      "variable": "Goles en contra del local (prom. últimos 5)",
+      "valor": 0.8
+    },
+    {
+      "feature": "away_gf5",
+      "variable": "Goles a favor del visitante (prom. últimos 5)",
+      "valor": 2.6
+    },
+    {
+      "feature": "away_ga5",
+      "variable": "Goles en contra del visitante (prom. últimos 5)",
+      "valor": 1.0
+    },
+    {
+      "feature": "home_pts5_home",
+      "variable": "Puntos por partido del local jugando EN CASA (últimos 5)",
+      "valor": 1.4
+    },
+    {
+      "feature": "away_pts5_away",
+      "variable": "Puntos por partido del visitante jugando FUERA (últimos 5)",
+      "valor": 2.2
+    },
+    {
+      "feature": "form_diff",
+      "variable": "Diferencia de forma (puntos últimos 5)",
+      "valor": -1.2
+    },
+    {
+      "feature": "gd_diff",
+      "variable": "Diferencia de gol reciente (local − visitante)",
+      "valor": -1.0
+    },
+    {
+      "feature": "div_E0",
+      "variable": "Liga: Premier League",
+      "valor": 1.0
+    },
+    {
+      "feature": "div_SP1",
+      "variable": "Liga: LaLiga",
+      "valor": 0.0
+    },
+    {
+      "feature": "div_I1",
+      "variable": "Liga: Serie A",
+      "valor": 0.0
+    },
+    {
+      "feature": "div_D1",
+      "variable": "Liga: Bundesliga",
+      "valor": 0.0
+    },
+    {
+      "feature": "div_F1",
+      "variable": "Liga: Ligue 1",
+      "valor": 0.0
+    }
+  ],
+  "rondas": [
+    {
+      "ronda": 1,
+      "arboles": [
+        {
+          "clase": "Local",
+          "pasos": [
+            {
+              "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+              "feature": "elo_diff",
+              "corte": 39.321,
+              "valor": -27.294,
+              "respuesta": "sí"
+            },
+            {
+              "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+              "feature": "elo_diff",
+              "corte": -57.298,
+              "valor": -27.294,
+              "respuesta": "no"
+            },
+            {
+              "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+              "feature": "elo_diff",
+              "corte": 19.039,
+              "valor": -27.294,
+              "respuesta": "sí"
+            }
+          ],
+          "hoja": -0.0077
+        },
+        {
+          "clase": "Empate",
+          "pasos": [
+            {
+              "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+              "feature": "elo_diff",
+              "corte": 162.034,
+              "valor": -27.294,
+              "respuesta": "sí"
+            },
+            {
+              "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+              "feature": "elo_diff",
+              "corte": -96.025,
+              "valor": -27.294,
+              "respuesta": "no"
+            },
+            {
+              "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+              "feature": "elo_diff",
+              "corte": 127.873,
+              "valor": -27.294,
+              "respuesta": "sí"
+            }
+          ],
+          "hoja": 0.0026
+        },
+        {
+          "clase": "Visitante",
+          "pasos": [
+            {
+              "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+              "feature": "elo_diff",
+              "corte": 19.039,
+              "valor": -27.294,
+              "respuesta": "sí"
+            },
+            {
+              "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+              "feature": "elo_diff",
+              "corte": -96.025,
+              "valor": -27.294,
+              "respuesta": "no"
+            },
+            {
+              "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+              "feature": "elo_diff",
+              "corte": -49.763,
+              "valor": -27.294,
+              "respuesta": "no"
+            }
+          ],
+          "hoja": 0.006
+        }
+      ]
+    },
+    {
+      "ronda": 2,
+      "arboles": [
+        {
+          "clase": "Local",
+          "pasos": [
+            {
+              "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+              "feature": "elo_diff",
+              "corte": 124.648,
+              "valor": -27.294,
+              "respuesta": "sí"
+            },
+            {
+              "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+              "feature": "elo_diff",
+              "corte": 19.039,
+              "valor": -27.294,
+              "respuesta": "sí"
+            },
+            {
+              "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+              "feature": "elo_diff",
+              "corte": -82.904,
+              "valor": -27.294,
+              "respuesta": "no"
+            }
+          ],
+          "hoja": -0.0084
+        },
+        {
+          "clase": "Empate",
+          "pasos": [
+            {
+              "variable": "Elo del local",
+              "feature": "home_elo",
+              "corte": 1607.756,
+              "valor": 1573.257,
+              "respuesta": "sí"
+            },
+            {
+              "variable": "Elo del visitante",
+              "feature": "away_elo",
+              "corte": 1642.315,
+              "valor": 1660.55,
+              "respuesta": "no"
+            },
+            {
+              "variable": "Elo del local",
+              "feature": "home_elo",
+              "corte": 1432.127,
+              "valor": 1573.257,
+              "respuesta": "no"
+            }
+          ],
+          "hoja": -0.0038
+        },
+        {
+          "clase": "Visitante",
+          "pasos": [
+            {
+              "variable": "Prob. de victoria local según Elo",
+              "feature": "elo_exp_home",
+              "corte": 0.527,
+              "valor": 0.461,
+              "respuesta": "sí"
+            },
+            {
+              "variable": "Prob. de victoria local según Elo",
+              "feature": "elo_exp_home",
+              "corte": 0.365,
+              "valor": 0.461,
+              "respuesta": "no"
+            },
+            {
+              "variable": "Prob. de victoria local según Elo",
+              "feature": "elo_exp_home",
+              "corte": 0.416,
+              "valor": 0.461,
+              "respuesta": "no"
+            }
+          ],
+          "hoja": 0.0064
+        }
+      ]
+    }
+  ],
+  "arboles_ronda1": {
+    "Local": [
+      {
+        "id": "0-0",
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "feature": "elo_diff",
+        "corte": 39.321,
+        "si": "0-1",
+        "no": "0-2",
+        "hoja": null,
+        "cover": 8596.9
+      },
+      {
+        "id": "0-1",
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "feature": "elo_diff",
+        "corte": -57.298,
+        "si": "0-3",
+        "no": "0-4",
+        "hoja": null,
+        "cover": 3651.9
+      },
+      {
+        "id": "0-2",
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "feature": "elo_diff",
+        "corte": 162.034,
+        "si": "0-5",
+        "no": "0-6",
+        "hoja": null,
+        "cover": 4945.0
+      },
+      {
+        "id": "0-3",
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "feature": "elo_diff",
+        "corte": -124.907,
+        "si": "0-7",
+        "no": "0-8",
+        "hoja": null,
+        "cover": 1355.4
+      },
+      {
+        "id": "0-4",
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "feature": "elo_diff",
+        "corte": 19.039,
+        "si": "0-9",
+        "no": "0-10",
+        "hoja": null,
+        "cover": 2296.5
+      },
+      {
+        "id": "0-5",
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "feature": "elo_diff",
+        "corte": 124.648,
+        "si": "0-11",
+        "no": "0-12",
+        "hoja": null,
+        "cover": 3308.3
+      },
+      {
+        "id": "0-6",
+        "variable": "Elo del local",
+        "feature": "home_elo",
+        "corte": 1631.165,
+        "si": "0-13",
+        "no": "0-14",
+        "hoja": null,
+        "cover": 1636.6
+      },
+      {
+        "id": "0-7",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": -0.019,
+        "cover": 565.5
+      },
+      {
+        "id": "0-8",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": -0.0133,
+        "cover": 789.9
+      },
+      {
+        "id": "0-9",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": -0.0077,
+        "cover": 1694.5
+      },
+      {
+        "id": "0-10",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": -0.004,
+        "cover": 602.1
+      },
+      {
+        "id": "0-11",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": 0.0013,
+        "cover": 2530.8
+      },
+      {
+        "id": "0-12",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": 0.0073,
+        "cover": 777.5
+      },
+      {
+        "id": "0-13",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": 0.0136,
+        "cover": 988.1
+      },
+      {
+        "id": "0-14",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": 0.0209,
+        "cover": 648.5
+      }
+    ],
+    "Empate": [
+      {
+        "id": "1-0",
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "feature": "elo_diff",
+        "corte": 162.034,
+        "si": "1-1",
+        "no": "1-2",
+        "hoja": null,
+        "cover": 6569.2
+      },
+      {
+        "id": "1-1",
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "feature": "elo_diff",
+        "corte": -96.025,
+        "si": "1-3",
+        "no": "1-4",
+        "hoja": null,
+        "cover": 5313.5
+      },
+      {
+        "id": "1-2",
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "feature": "elo_diff",
+        "corte": 274.471,
+        "si": "1-5",
+        "no": "1-6",
+        "hoja": null,
+        "cover": 1255.7
+      },
+      {
+        "id": "1-3",
+        "variable": "Elo del visitante",
+        "feature": "away_elo",
+        "corte": 1659.943,
+        "si": "1-7",
+        "no": "1-8",
+        "hoja": null,
+        "cover": 645.9
+      },
+      {
+        "id": "1-4",
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "feature": "elo_diff",
+        "corte": 127.873,
+        "si": "1-9",
+        "no": "1-10",
+        "hoja": null,
+        "cover": 4667.6
+      },
+      {
+        "id": "1-5",
+        "variable": "Goles a favor del local (prom. últimos 5)",
+        "feature": "home_gf5",
+        "corte": 2.2,
+        "si": "1-11",
+        "no": "1-12",
+        "hoja": null,
+        "cover": 974.3
+      },
+      {
+        "id": "1-6",
+        "variable": "Elo del visitante",
+        "feature": "away_elo",
+        "corte": 1479.132,
+        "si": "1-13",
+        "no": "1-14",
+        "hoja": null,
+        "cover": 281.4
+      },
+      {
+        "id": "1-7",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": -0.0021,
+        "cover": 350.9
+      },
+      {
+        "id": "1-8",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": -0.0075,
+        "cover": 294.9
+      },
+      {
+        "id": "1-9",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": 0.0026,
+        "cover": 4135.2
+      },
+      {
+        "id": "1-10",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": -0.001,
+        "cover": 532.4
+      },
+      {
+        "id": "1-11",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": -0.0035,
+        "cover": 662.0
+      },
+      {
+        "id": "1-12",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": -0.0081,
+        "cover": 312.2
+      },
+      {
+        "id": "1-13",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": -0.0125,
+        "cover": 262.6
+      },
+      {
+        "id": "1-14",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": -0.0037,
+        "cover": 18.8
+      }
+    ],
+    "Visitante": [
+      {
+        "id": "2-0",
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "feature": "elo_diff",
+        "corte": 19.039,
+        "si": "2-1",
+        "no": "2-2",
+        "hoja": null,
+        "cover": 7344.0
+      },
+      {
+        "id": "2-1",
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "feature": "elo_diff",
+        "corte": -96.025,
+        "si": "2-3",
+        "no": "2-4",
+        "hoja": null,
+        "cover": 2601.9
+      },
+      {
+        "id": "2-2",
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "feature": "elo_diff",
+        "corte": 137.499,
+        "si": "2-5",
+        "no": "2-6",
+        "hoja": null,
+        "cover": 4742.1
+      },
+      {
+        "id": "2-3",
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "feature": "elo_diff",
+        "corte": -172.248,
+        "si": "2-7",
+        "no": "2-8",
+        "hoja": null,
+        "cover": 716.3
+      },
+      {
+        "id": "2-4",
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "feature": "elo_diff",
+        "corte": -49.763,
+        "si": "2-9",
+        "no": "2-10",
+        "hoja": null,
+        "cover": 1885.6
+      },
+      {
+        "id": "2-5",
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "feature": "elo_diff",
+        "corte": 69.779,
+        "si": "2-11",
+        "no": "2-12",
+        "hoja": null,
+        "cover": 2907.1
+      },
+      {
+        "id": "2-6",
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "feature": "elo_diff",
+        "corte": 213.357,
+        "si": "2-13",
+        "no": "2-14",
+        "hoja": null,
+        "cover": 1834.9
+      },
+      {
+        "id": "2-7",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": 0.0297,
+        "cover": 228.4
+      },
+      {
+        "id": "2-8",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": 0.0217,
+        "cover": 488.0
+      },
+      {
+        "id": "2-9",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": 0.0126,
+        "cover": 567.7
+      },
+      {
+        "id": "2-10",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": 0.006,
+        "cover": 1317.8
+      },
+      {
+        "id": "2-11",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": -0.0011,
+        "cover": 1324.6
+      },
+      {
+        "id": "2-12",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": -0.0052,
+        "cover": 1582.5
+      },
+      {
+        "id": "2-13",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": -0.0105,
+        "cover": 1056.1
+      },
+      {
+        "id": "2-14",
+        "variable": null,
+        "feature": null,
+        "corte": null,
+        "si": null,
+        "no": null,
+        "hoja": -0.0163,
+        "cover": 778.8
+      }
+    ]
+  },
+  "puntaje_inicial": [
+    0.3221,
+    -0.2552,
+    -0.0669
+  ],
+  "trayectoria": [
+    {
+      "ronda": 1,
+      "puntajes": [
+        0.3144,
+        -0.2526,
+        -0.0609
+      ],
+      "probs": [
+        0.4436,
+        0.2516,
+        0.3048
+      ]
+    },
+    {
+      "ronda": 2,
+      "puntajes": [
+        0.3061,
+        -0.2564,
+        -0.0545
+      ],
+      "probs": [
+        0.4411,
+        0.2513,
+        0.3076
+      ]
+    },
+    {
+      "ronda": 3,
+      "puntajes": [
+        0.298,
+        -0.2558,
+        -0.0418
+      ],
+      "probs": [
+        0.4373,
+        0.2513,
+        0.3113
+      ]
+    },
+    {
+      "ronda": 5,
+      "puntajes": [
+        0.2837,
+        -0.2523,
+        -0.0205
+      ],
+      "probs": [
+        0.4305,
+        0.2519,
+        0.3176
+      ]
+    },
+    {
+      "ronda": 10,
+      "puntajes": [
+        0.2489,
+        -0.2484,
+        0.028
+      ],
+      "probs": [
+        0.4149,
+        0.2524,
+        0.3327
+      ]
+    },
+    {
+      "ronda": 20,
+      "puntajes": [
+        0.1845,
+        -0.2401,
+        0.1089
+      ],
+      "probs": [
+        0.3874,
+        0.2534,
+        0.3592
+      ]
+    },
+    {
+      "ronda": 50,
+      "puntajes": [
+        0.055,
+        -0.2467,
+        0.2776
+      ],
+      "probs": [
+        0.3346,
+        0.2474,
+        0.418
+      ]
+    },
+    {
+      "ronda": 100,
+      "puntajes": [
+        -0.0904,
+        -0.2429,
+        0.3825
+      ],
+      "probs": [
+        0.2888,
+        0.2479,
+        0.4633
+      ]
+    },
+    {
+      "ronda": 150,
+      "puntajes": [
+        -0.1233,
+        -0.2412,
+        0.4058
+      ],
+      "probs": [
+        0.2789,
+        0.2478,
+        0.4733
+      ]
+    },
+    {
+      "ronda": 187,
+      "puntajes": [
+        -0.1207,
+        -0.2314,
+        0.42
+      ],
+      "probs": [
+        0.2768,
+        0.2478,
+        0.4754
+      ]
+    }
+  ],
+  "prob_final": [
+    0.2768,
+    0.2478,
+    0.4754
+  ],
+  "shap": {
+    "Local": {
+      "base": 0.3083,
+      "suma": -0.429,
+      "top": [
+        {
+          "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+          "valor": -27.294,
+          "impacto": -0.2605
+        },
+        {
+          "variable": "Elo del visitante",
+          "valor": 1660.55,
+          "impacto": -0.1382
+        },
+        {
+          "variable": "Elo del local",
+          "valor": 1573.257,
+          "impacto": 0.0824
+        },
+        {
+          "variable": "Diferencia de gol reciente (local − visitante)",
+          "valor": -1.0,
+          "impacto": -0.0589
+        },
+        {
+          "variable": "Prob. de victoria local según Elo",
+          "valor": 0.461,
+          "impacto": -0.0578
+        },
+        {
+          "variable": "Diferencia de forma (puntos últimos 5)",
+          "valor": -1.2,
+          "impacto": 0.0311
+        },
+        {
+          "variable": "Puntos por partido del local (últimos 5)",
+          "valor": 1.8,
+          "impacto": -0.0103
+        }
+      ]
+    },
+    "Empate": {
+      "base": -0.2204,
+      "suma": -0.011,
+      "top": [
+        {
+          "variable": "Elo del visitante",
+          "valor": 1660.55,
+          "impacto": -0.0474
+        },
+        {
+          "variable": "Puntos por partido del visitante jugando FUERA (últimos 5)",
+          "valor": 2.2,
+          "impacto": -0.0433
+        },
+        {
+          "variable": "Goles en contra del visitante (prom. últimos 5)",
+          "valor": 1.0,
+          "impacto": 0.035
+        },
+        {
+          "variable": "Puntos por partido del visitante (últimos 5)",
+          "valor": 3.0,
+          "impacto": 0.0314
+        },
+        {
+          "variable": "Goles en contra del local (prom. últimos 5)",
+          "valor": 0.8,
+          "impacto": -0.0123
+        },
+        {
+          "variable": "Diferencia de gol reciente (local − visitante)",
+          "valor": -1.0,
+          "impacto": 0.0123
+        },
+        {
+          "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+          "valor": -27.294,
+          "impacto": 0.0115
+        }
+      ]
+    },
+    "Visitante": {
+      "base": -0.0832,
+      "suma": 0.5032,
+      "top": [
+        {
+          "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+          "valor": -27.294,
+          "impacto": 0.3133
+        },
+        {
+          "variable": "Elo del visitante",
+          "valor": 1660.55,
+          "impacto": 0.117
+        },
+        {
+          "variable": "Prob. de victoria local según Elo",
+          "valor": 0.461,
+          "impacto": 0.1043
+        },
+        {
+          "variable": "Elo del local",
+          "valor": 1573.257,
+          "impacto": -0.0408
+        },
+        {
+          "variable": "Puntos por partido del visitante (últimos 5)",
+          "valor": 3.0,
+          "impacto": -0.0155
+        },
+        {
+          "variable": "Diferencia de gol reciente (local − visitante)",
+          "valor": -1.0,
+          "impacto": 0.011
+        },
+        {
+          "variable": "Goles a favor del visitante (prom. últimos 5)",
+          "valor": 2.6,
+          "impacto": 0.0056
+        }
+      ]
+    }
+  },
+  "cuotas": [
+    2.7,
+    3.6,
+    2.45
+  ],
+  "prob_mercado": [
+    0.3506,
+    0.263,
+    0.3864
+  ],
+  "margen": 0.0563,
+  "ev": [
+    -0.2526,
+    -0.1079,
+    0.1647
+  ],
+  "kelly_completo": [
+    0.0,
+    0.0,
+    0.1136
+  ],
+  "apuesta": "Visitante",
+  "stake": 0.0284,
+  "razon": "El modelo estima 47.5% para 'Visitante' y el mercado (sin comisión) 38.6%. Con cuota 2.45, el valor esperado es +16.5% por cada $1, sobre el umbral de 5%."
+}

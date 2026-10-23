@@ -1,0 +1,1357 @@
+{
+  "generado": "2026-10-23T17:55:48Z",
+  "datos": {
+    "partidos": 27413,
+    "desde": "2011-08-05",
+    "hasta": "2026-10-21",
+    "temporadas": [
+      "1112",
+      "1213",
+      "1314",
+      "1415",
+      "1516",
+      "1617",
+      "1718",
+      "1819",
+      "1920",
+      "2021",
+      "2122",
+      "2223",
+      "2324",
+      "2425",
+      "2526",
+      "2627"
+    ],
+    "por_liga": {
+      "Bundesliga": {
+        "partidos": 4644,
+        "local": 0.4468,
+        "empate": 0.2466,
+        "visitante": 0.3066,
+        "margen_bet365": 0.0557
+      },
+      "Premier League": {
+        "partidos": 5770,
+        "local": 0.4452,
+        "empate": 0.2395,
+        "visitante": 0.3153,
+        "margen_bet365": 0.0431
+      },
+      "Ligue 1": {
+        "partidos": 5440,
+        "local": 0.4437,
+        "empate": 0.2596,
+        "visitante": 0.2967,
+        "margen_bet365": 0.056
+      },
+      "Serie A": {
+        "partidos": 5770,
+        "local": 0.4307,
+        "empate": 0.2589,
+        "visitante": 0.3104,
+        "margen_bet365": 0.056
+      },
+      "LaLiga": {
+        "partidos": 5789,
+        "local": 0.4626,
+        "empate": 0.2536,
+        "visitante": 0.2838,
+        "margen_bet365": 0.056
+      }
+    }
+  },
+  "split": {
+    "entrenamiento": {
+      "temporadas": [
+        "1213",
+        "2324"
+      ],
+      "partidos": 21737
+    },
+    "validacion": {
+      "temporadas": [
+        "2425",
+        "2425"
+      ],
+      "partidos": 1752
+    },
+    "prueba": {
+      "temporadas": [
+        "2526",
+        "2627"
+      ],
+      "partidos": 2098
+    }
+  },
+  "arboles": 187,
+  "metricas": [
+    {
+      "Modelo": "Ingenuo (frecuencias)",
+      "Partidos": 2098,
+      "Log loss": 1.0707,
+      "Brier": 0.6476,
+      "Accuracy": 0.4418
+    },
+    {
+      "Modelo": "XGBoost (nuestro)",
+      "Partidos": 2098,
+      "Log loss": 0.9918,
+      "Brier": 0.5907,
+      "Accuracy": 0.5167
+    },
+    {
+      "Modelo": "Mercado Bet365 (sin margen)",
+      "Partidos": 2098,
+      "Log loss": 0.9759,
+      "Brier": 0.5805,
+      "Accuracy": 0.5357
+    }
+  ],
+  "backtest": [
+    {
+      "Estrategia": "Apuesta fija 1%",
+      "Apuestas": 1112,
+      "Bankroll final": 362.6,
+      "Ganancia %": -63.7,
+      "ROI sobre lo apostado %": -5.7,
+      "Máx. caída %": 80.3
+    },
+    {
+      "Estrategia": "Kelly completo",
+      "Apuestas": 1112,
+      "Bankroll final": 0.0,
+      "Ganancia %": -100.0,
+      "ROI sobre lo apostado %": -13.3,
+      "Máx. caída %": 100.0
+    },
+    {
+      "Estrategia": "Kelly 1/2",
+      "Apuestas": 1112,
+      "Bankroll final": 12.92,
+      "Ganancia %": -98.7,
+      "ROI sobre lo apostado %": -6.9,
+      "Máx. caída %": 99.2
+    },
+    {
+      "Estrategia": "Kelly 1/4",
+      "Apuestas": 1112,
+      "Bankroll final": 57.28,
+      "Ganancia %": -94.3,
+      "ROI sobre lo apostado %": -8.7,
+      "Máx. caída %": 96.2
+    }
+  ],
+  "backtest_aciertos": 0.3417,
+  "backtest_apuestas_valor": 1112,
+  "importancia": [
+    {
+      "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+      "total": 0.6144
+    },
+    {
+      "variable": "Prob. de victoria local según Elo",
+      "total": 0.1582
+    },
+    {
+      "variable": "Elo del local",
+      "total": 0.1465
+    },
+    {
+      "variable": "Diferencia de gol reciente (local − visitante)",
+      "total": 0.0787
+    },
+    {
+      "variable": "Elo del visitante",
+      "total": 0.0662
+    },
+    {
+      "variable": "Diferencia de forma (puntos últimos 5)",
+      "total": 0.0367
+    },
+    {
+      "variable": "Goles en contra del visitante (prom. últimos 5)",
+      "total": 0.0316
+    },
+    {
+      "variable": "Liga: LaLiga",
+      "total": 0.021
+    },
+    {
+      "variable": "Puntos por partido del visitante (últimos 5)",
+      "total": 0.0195
+    },
+    {
+      "variable": "Puntos por partido del local (últimos 5)",
+      "total": 0.0186
+    }
+  ],
+  "curva_aprendizaje": {
+    "arboles": [
+      1,
+      6,
+      11,
+      16,
+      21,
+      26,
+      31,
+      36,
+      41,
+      46,
+      51,
+      56,
+      61,
+      66,
+      71,
+      76,
+      81,
+      86,
+      91,
+      96,
+      101,
+      106,
+      111,
+      116,
+      121,
+      126,
+      131,
+      136,
+      141,
+      146,
+      151,
+      156,
+      161,
+      166,
+      171,
+      176,
+      181,
+      186,
+      191,
+      196,
+      201,
+      206,
+      211,
+      216,
+      221,
+      226,
+      231,
+      236,
+      241,
+      246,
+      251,
+      256,
+      261,
+      266,
+      271,
+      276,
+      281,
+      286,
+      291,
+      296,
+      301,
+      306,
+      311,
+      316,
+      321,
+      326,
+      331,
+      336,
+      341,
+      346,
+      351,
+      356,
+      361,
+      366,
+      371,
+      376,
+      381,
+      386,
+      391,
+      396,
+      401,
+      406,
+      411,
+      416,
+      421,
+      426,
+      431,
+      436,
+      441,
+      446,
+      451,
+      456,
+      461,
+      466,
+      471,
+      476,
+      481,
+      486,
+      491,
+      496,
+      501,
+      506,
+      511,
+      516,
+      521,
+      526,
+      531,
+      536,
+      541,
+      546,
+      551,
+      556,
+      561,
+      566,
+      571,
+      576,
+      581,
+      586,
+      591,
+      596
+    ],
+    "entrenamiento": [
+      1.0647,
+      1.0479,
+      1.0346,
+      1.024,
+      1.0157,
+      1.0088,
+      1.0032,
+      0.9987,
+      0.995,
+      0.9919,
+      0.9894,
+      0.9872,
+      0.9854,
+      0.9839,
+      0.9827,
+      0.9815,
+      0.9805,
+      0.9797,
+      0.9789,
+      0.9782,
+      0.9775,
+      0.9769,
+      0.9764,
+      0.9759,
+      0.9754,
+      0.9749,
+      0.9745,
+      0.9741,
+      0.9737,
+      0.9733,
+      0.9729,
+      0.9725,
+      0.9721,
+      0.9717,
+      0.9713,
+      0.9709,
+      0.9706,
+      0.9703,
+      0.9699,
+      0.9696,
+      0.9693,
+      0.9689,
+      0.9686,
+      0.9684,
+      0.968,
+      0.9677,
+      0.9674,
+      0.9671,
+      0.9669,
+      0.9666,
+      0.9663,
+      0.966,
+      0.9656,
+      0.9654,
+      0.9651,
+      0.9648,
+      0.9646,
+      0.9643,
+      0.964,
+      0.9638,
+      0.9635,
+      0.9632,
+      0.963,
+      0.9627,
+      0.9624,
+      0.9622,
+      0.9619,
+      0.9616,
+      0.9614,
+      0.9611,
+      0.9609,
+      0.9606,
+      0.9603,
+      0.9601,
+      0.9598,
+      0.9596,
+      0.9594,
+      0.9592,
+      0.9589,
+      0.9587,
+      0.9584,
+      0.9582,
+      0.9579,
+      0.9577,
+      0.9574,
+      0.9573,
+      0.957,
+      0.9568,
+      0.9566,
+      0.9564,
+      0.9562,
+      0.9559,
+      0.9558,
+      0.9556,
+      0.9553,
+      0.9551,
+      0.9549,
+      0.9547,
+      0.9545,
+      0.9542,
+      0.954,
+      0.9538,
+      0.9536,
+      0.9534,
+      0.9531,
+      0.9529,
+      0.9527,
+      0.9525,
+      0.9522,
+      0.952,
+      0.9518,
+      0.9516,
+      0.9514,
+      0.9512,
+      0.951,
+      0.9508,
+      0.9506,
+      0.9504,
+      0.9502,
+      0.9499
+    ],
+    "validacion": [
+      1.0745,
+      1.0565,
+      1.0427,
+      1.0316,
+      1.0232,
+      1.0163,
+      1.0107,
+      1.0062,
+      1.0027,
+      0.9999,
+      0.9977,
+      0.9959,
+      0.9944,
+      0.9932,
+      0.9923,
+      0.9916,
+      0.9909,
+      0.9904,
+      0.9899,
+      0.9894,
+      0.9891,
+      0.9888,
+      0.9886,
+      0.9885,
+      0.9883,
+      0.9881,
+      0.9881,
+      0.988,
+      0.9879,
+      0.9879,
+      0.9879,
+      0.9877,
+      0.9876,
+      0.9876,
+      0.9876,
+      0.9874,
+      0.9873,
+      0.9873,
+      0.9873,
+      0.9874,
+      0.9873,
+      0.9874,
+      0.9874,
+      0.9875,
+      0.9874,
+      0.9875,
+      0.9875,
+      0.9875,
+      0.9874,
+      0.9874,
+      0.9873,
+      0.9873,
+      0.9873,
+      0.9873,
+      0.9873,
+      0.9873,
+      0.9873,
+      0.9874,
+      0.9874,
+      0.9874,
+      0.9874,
+      0.9874,
+      0.9875,
+      0.9875,
+      0.9876,
+      0.9876,
+      0.9878,
+      0.9878,
+      0.9879,
+      0.988,
+      0.988,
+      0.9879,
+      0.9879,
+      0.9879,
+      0.988,
+      0.9881,
+      0.9881,
+      0.9881,
+      0.9881,
+      0.9881,
+      0.9882,
+      0.9882,
+      0.9883,
+      0.9884,
+      0.9884,
+      0.9884,
+      0.9885,
+      0.9885,
+      0.9886,
+      0.9887,
+      0.9887,
+      0.9887,
+      0.9888,
+      0.9888,
+      0.9889,
+      0.989,
+      0.9891,
+      0.9891,
+      0.9891,
+      0.9892,
+      0.9892,
+      0.9893,
+      0.9894,
+      0.9895,
+      0.9896,
+      0.9897,
+      0.9897,
+      0.9898,
+      0.9898,
+      0.9899,
+      0.99,
+      0.99,
+      0.9901,
+      0.9902,
+      0.9902,
+      0.9902,
+      0.9903,
+      0.9904,
+      0.9904,
+      0.9905
+    ],
+    "arboles_elegidos": 187
+  },
+  "sensibilidad_umbral": [
+    {
+      "umbral": 0.0,
+      "apuestas": 1558,
+      "roi": -7.89,
+      "aciertos": 0.3549,
+      "cuota_media": 2.99
+    },
+    {
+      "umbral": 0.02,
+      "apuestas": 1377,
+      "roi": -5.12,
+      "aciertos": 0.3566,
+      "cuota_media": 3.03
+    },
+    {
+      "umbral": 0.05,
+      "apuestas": 1112,
+      "roi": -5.73,
+      "aciertos": 0.3417,
+      "cuota_media": 3.1
+    },
+    {
+      "umbral": 0.08,
+      "apuestas": 859,
+      "roi": -11.47,
+      "aciertos": 0.3108,
+      "cuota_media": 3.16
+    },
+    {
+      "umbral": 0.1,
+      "apuestas": 734,
+      "roi": -11.64,
+      "aciertos": 0.3052,
+      "cuota_media": 3.2
+    },
+    {
+      "umbral": 0.15,
+      "apuestas": 475,
+      "roi": -8.83,
+      "aciertos": 0.3011,
+      "cuota_media": 3.27
+    },
+    {
+      "umbral": 0.2,
+      "apuestas": 301,
+      "roi": -14.22,
+      "aciertos": 0.2658,
+      "cuota_media": 3.39
+    },
+    {
+      "umbral": 0.3,
+      "apuestas": 118,
+      "roi": -17.28,
+      "aciertos": 0.2542,
+      "cuota_media": 3.41
+    }
+  ],
+  "roi_por_cuota": [
+    {
+      "tramo": "1-2",
+      "apuestas": 172,
+      "roi": 1.83,
+      "aciertos": 0.6105,
+      "prob_modelo": 0.6704,
+      "prob_mercado": 0.5697
+    },
+    {
+      "tramo": "2-3",
+      "apuestas": 352,
+      "roi": -13.52,
+      "aciertos": 0.3608,
+      "prob_modelo": 0.4779,
+      "prob_mercado": 0.3884
+    },
+    {
+      "tramo": "3-5",
+      "apuestas": 519,
+      "roi": -6.13,
+      "aciertos": 0.2505,
+      "prob_modelo": 0.3147,
+      "prob_mercado": 0.2541
+    },
+    {
+      "tramo": "5-10",
+      "apuestas": 219,
+      "roi": 0.46,
+      "aciertos": 0.1644,
+      "prob_modelo": 0.1989,
+      "prob_mercado": 0.1498
+    },
+    {
+      "tramo": "10+",
+      "apuestas": 71,
+      "roi": -67.61,
+      "aciertos": 0.0282,
+      "prob_modelo": 0.1128,
+      "prob_mercado": 0.0743
+    }
+  ],
+  "ejemplo": {
+    "fecha": "2026-10-19",
+    "liga": "LaLiga",
+    "local": "Getafe",
+    "visitante": "Vallecano",
+    "resultado_real": "D",
+    "goles": [
+      1,
+      1
+    ],
+    "cuotas": [
+      2.9,
+      3.0,
+      2.7
+    ],
+    "p_modelo": [
+      0.3849,
+      0.284,
+      0.3311
+    ],
+    "p_mercado": [
+      0.3289,
+      0.3179,
+      0.3532
+    ],
+    "ev": [
+      0.1162,
+      -0.148,
+      -0.106
+    ],
+    "kelly_completo": [
+      0.0611,
+      0.0,
+      0.0
+    ],
+    "margen": 0.0485,
+    "apuesta": "Local",
+    "stake": 0.0153,
+    "razon": "El modelo estima 38.5% para 'Local' y el mercado (sin comisión) 32.9%. Con cuota 2.90, el valor esperado es +11.6% por cada $1, sobre el umbral de 5%.",
+    "shap": [
+      {
+        "variable": "Diferencia de Elo (local + ventaja de casa − visitante)",
+        "valor": 21.132,
+        "impacto": -0.1063
+      },
+      {
+        "variable": "Elo del local",
+        "valor": 1466.324,
+        "impacto": -0.0713
+      },
+      {
+        "variable": "Diferencia de forma (puntos últimos 5)",
+        "valor": -0.4,
+        "impacto": 0.0334
+      },
+      {
+        "variable": "Prob. de victoria local según Elo",
+        "valor": 0.53,
+        "impacto": -0.0269
+      },
+      {
+        "variable": "Diferencia de gol reciente (local − visitante)",
+        "valor": 0.2,
+        "impacto": 0.0235
+      }
+    ],
+    "shap_base": [
+      0.3016,
+      -0.2208,
+      -0.0769
+    ],
+    "shap_clase": "Local",
+    "shap_total": -0.1221
+  },
+  "proximos": [
+    {
+      "fecha": "2026-10-23",
+      "liga": "Bundesliga",
+      "local": "Stuttgart",
+      "visitante": "M'gladbach",
+      "p": [
+        0.656,
+        0.221,
+        0.123
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-23",
+      "liga": "Premier League",
+      "local": "Ipswich",
+      "visitante": "Nott'm Forest",
+      "p": [
+        0.332,
+        0.251,
+        0.417
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-23",
+      "liga": "Ligue 1",
+      "local": "Brest",
+      "visitante": "Nice",
+      "p": [
+        0.456,
+        0.288,
+        0.256
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-23",
+      "liga": "Serie A",
+      "local": "Torino",
+      "visitante": "Monza",
+      "p": [
+        0.565,
+        0.252,
+        0.183
+      ],
+      "apuesta": "Local",
+      "ev": 0.1869
+    },
+    {
+      "fecha": "2026-10-23",
+      "liga": "LaLiga",
+      "local": "Alaves",
+      "visitante": "Malaga",
+      "p": [
+        0.583,
+        0.237,
+        0.18
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "Bundesliga",
+      "local": "Augsburg",
+      "visitante": "Union Berlin",
+      "p": [
+        0.475,
+        0.27,
+        0.254
+      ],
+      "apuesta": "Empate",
+      "ev": 0.0536
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "Bundesliga",
+      "local": "FC Koln",
+      "visitante": "Schalke 04",
+      "p": [
+        0.433,
+        0.305,
+        0.262
+      ],
+      "apuesta": "Empate",
+      "ev": 0.1429
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "Bundesliga",
+      "local": "Mainz",
+      "visitante": "Werder Bremen",
+      "p": [
+        0.48,
+        0.308,
+        0.212
+      ],
+      "apuesta": "Empate",
+      "ev": 0.2333
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "Bundesliga",
+      "local": "Paderborn",
+      "visitante": "Hamburg",
+      "p": [
+        0.359,
+        0.22,
+        0.42
+      ],
+      "apuesta": "Visitante",
+      "ev": 0.2611
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "Bundesliga",
+      "local": "RB Leipzig",
+      "visitante": "Elversberg",
+      "p": [
+        0.681,
+        0.184,
+        0.135
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "Bundesliga",
+      "local": "Dortmund",
+      "visitante": "Ein Frankfurt",
+      "p": [
+        0.676,
+        0.187,
+        0.136
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "Premier League",
+      "local": "Aston Villa",
+      "visitante": "Man City",
+      "p": [
+        0.232,
+        0.233,
+        0.535
+      ],
+      "apuesta": "Local",
+      "ev": 0.1593
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "Premier League",
+      "local": "Arsenal",
+      "visitante": "Everton",
+      "p": [
+        0.747,
+        0.155,
+        0.099
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "Premier League",
+      "local": "Coventry",
+      "visitante": "Fulham",
+      "p": [
+        0.341,
+        0.314,
+        0.345
+      ],
+      "apuesta": "Local",
+      "ev": 0.0906
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "Premier League",
+      "local": "Chelsea",
+      "visitante": "Tottenham",
+      "p": [
+        0.576,
+        0.25,
+        0.174
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "Ligue 1",
+      "local": "Lens",
+      "visitante": "Paris FC",
+      "p": [
+        0.563,
+        0.245,
+        0.192
+      ],
+      "apuesta": "Local",
+      "ev": 0.3791
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "Serie A",
+      "local": "Cagliari",
+      "visitante": "Bologna",
+      "p": [
+        0.408,
+        0.29,
+        0.302
+      ],
+      "apuesta": "Local",
+      "ev": 0.3056
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "Serie A",
+      "local": "Como",
+      "visitante": "Sassuolo",
+      "p": [
+        0.666,
+        0.203,
+        0.131
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "Serie A",
+      "local": "Napoli",
+      "visitante": "Roma",
+      "p": [
+        0.371,
+        0.292,
+        0.337
+      ],
+      "apuesta": "Local",
+      "ev": 0.0677
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "Serie A",
+      "local": "Lazio",
+      "visitante": "Parma",
+      "p": [
+        0.698,
+        0.176,
+        0.127
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "LaLiga",
+      "local": "Vallecano",
+      "visitante": "Elche",
+      "p": [
+        0.499,
+        0.288,
+        0.213
+      ],
+      "apuesta": "Empate",
+      "ev": 0.0803
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "LaLiga",
+      "local": "Santander",
+      "visitante": "Espanol",
+      "p": [
+        0.366,
+        0.339,
+        0.296
+      ],
+      "apuesta": "Empate",
+      "ev": 0.2187
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "LaLiga",
+      "local": "Valencia",
+      "visitante": "Villarreal",
+      "p": [
+        0.318,
+        0.284,
+        0.398
+      ],
+      "apuesta": "Local",
+      "ev": 0.0505
+    },
+    {
+      "fecha": "2026-10-24",
+      "liga": "LaLiga",
+      "local": "Ath Madrid",
+      "visitante": "La Coruna",
+      "p": [
+        0.738,
+        0.176,
+        0.087
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Bundesliga",
+      "local": "Hoffenheim",
+      "visitante": "Leverkusen",
+      "p": [
+        0.275,
+        0.275,
+        0.449
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Bundesliga",
+      "local": "Freiburg",
+      "visitante": "Bayern Munich",
+      "p": [
+        0.155,
+        0.183,
+        0.662
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Premier League",
+      "local": "Crystal Palace",
+      "visitante": "Newcastle",
+      "p": [
+        0.432,
+        0.275,
+        0.293
+      ],
+      "apuesta": "Local",
+      "ev": 0.2531
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Premier League",
+      "local": "Hull",
+      "visitante": "Brentford",
+      "p": [
+        0.324,
+        0.263,
+        0.414
+      ],
+      "apuesta": "Local",
+      "ev": 0.6183
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Premier League",
+      "local": "Liverpool",
+      "visitante": "Brighton",
+      "p": [
+        0.391,
+        0.279,
+        0.331
+      ],
+      "apuesta": "Visitante",
+      "ev": 0.1239
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Premier League",
+      "local": "Man United",
+      "visitante": "Bournemouth",
+      "p": [
+        0.516,
+        0.249,
+        0.234
+      ],
+      "apuesta": "Local",
+      "ev": 0.1101
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Premier League",
+      "local": "Sunderland",
+      "visitante": "Leeds",
+      "p": [
+        0.334,
+        0.313,
+        0.353
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Ligue 1",
+      "local": "Monaco",
+      "visitante": "Lille",
+      "p": [
+        0.5,
+        0.242,
+        0.258
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Ligue 1",
+      "local": "Angers",
+      "visitante": "Lorient",
+      "p": [
+        0.337,
+        0.293,
+        0.369
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Ligue 1",
+      "local": "Auxerre",
+      "visitante": "Le Mans",
+      "p": [
+        0.472,
+        0.291,
+        0.238
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Ligue 1",
+      "local": "Marseille",
+      "visitante": "Le Havre",
+      "p": [
+        0.654,
+        0.204,
+        0.142
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Ligue 1",
+      "local": "Rennes",
+      "visitante": "Strasbourg",
+      "p": [
+        0.503,
+        0.267,
+        0.23
+      ],
+      "apuesta": "Empate",
+      "ev": 0.1549
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Ligue 1",
+      "local": "Toulouse",
+      "visitante": "Troyes",
+      "p": [
+        0.659,
+        0.211,
+        0.13
+      ],
+      "apuesta": "Local",
+      "ev": 0.0542
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Serie A",
+      "local": "Inter",
+      "visitante": "Fiorentina",
+      "p": [
+        0.83,
+        0.093,
+        0.077
+      ],
+      "apuesta": "Local",
+      "ev": 0.1285
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Serie A",
+      "local": "Atalanta",
+      "visitante": "Frosinone",
+      "p": [
+        0.574,
+        0.251,
+        0.175
+      ],
+      "apuesta": "Empate",
+      "ev": 0.0527
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Serie A",
+      "local": "Genoa",
+      "visitante": "Venezia",
+      "p": [
+        0.494,
+        0.282,
+        0.225
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Serie A",
+      "local": "Lecce",
+      "visitante": "Juventus",
+      "p": [
+        0.239,
+        0.254,
+        0.508
+      ],
+      "apuesta": "Empate",
+      "ev": 0.0655
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "Serie A",
+      "local": "Udinese",
+      "visitante": "Milan",
+      "p": [
+        0.218,
+        0.289,
+        0.493
+      ],
+      "apuesta": "Empate",
+      "ev": 0.0698
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "LaLiga",
+      "local": "Ath Bilbao",
+      "visitante": "Getafe",
+      "p": [
+        0.448,
+        0.289,
+        0.263
+      ],
+      "apuesta": "Empate",
+      "ev": 0.1559
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "LaLiga",
+      "local": "Celta",
+      "visitante": "Betis",
+      "p": [
+        0.317,
+        0.267,
+        0.416
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "LaLiga",
+      "local": "Sociedad",
+      "visitante": "Levante",
+      "p": [
+        0.467,
+        0.296,
+        0.237
+      ],
+      "apuesta": "Empate",
+      "ev": 0.1548
+    },
+    {
+      "fecha": "2026-10-25",
+      "liga": "LaLiga",
+      "local": "Barcelona",
+      "visitante": "Real Madrid",
+      "p": [
+        0.605,
+        0.204,
+        0.191
+      ],
+      "apuesta": null,
+      "ev": null
+    },
+    {
+      "fecha": "2026-10-26",
+      "liga": "Ligue 1",
+      "local": "Paris SG",
+      "visitante": "Lyon",
+      "p": [
+        0.582,
+        0.252,
+        0.166
+      ],
+      "apuesta": "Empate",
+      "ev": 0.1989
+    },
+    {
+      "fecha": "2026-10-26",
+      "liga": "LaLiga",
+      "local": "Sevilla",
+      "visitante": "Osasuna",
+      "p": [
+        0.464,
+        0.28,
+        0.256
+      ],
+      "apuesta": "Visitante",
+      "ev": 0.075
+    }
+  ]
+}
